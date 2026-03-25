@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #fff;
+}
+
+/* NAV */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10%;
+  position: sticky;
+  top: 0;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+}
+
+nav h2 {
+  color: #38bdf8;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  color: #38bdf8;
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 10%;
+}
+
+.hero img {
+  width: 250px;
+  border-radius: 50%;
+  border: 4px solid #38bdf8;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.hero-text h1 {
+  font-size: 40px;
+}
+
+.hero-text span {
+  color: #38bdf8;
+}
+
+.hero-text p {
+  margin: 15px 0;
+  color: #cbd5f5;
+}
+
+/* BUTTON */
+.btn {
+  background: #38bdf8;
+  padding: 10px 20px;
+  border-radius: 25px;
+  color: black;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #0ea5e9;
+}
+
+/* SECTION */
+section {
+  padding: 60px 10%;
+}
+
+h2.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #38bdf8;
+}
+
+/* SKILLS */
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 20px;
+}
+
+.skill {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.skill:hover {
+  transform: scale(1.05);
+}
+
+/* PROJECTS */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 20px;
+}
+
+.project {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.project:hover {
+  transform: translateY(-10px);
+}
+
+/* TIMELINE */
+.timeline {
+  border-left: 2px solid #38bdf8;
+  padding-left: 20px;
+}
+
+.timeline-item {
+  margin-bottom: 20px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #020617;
+}
+
+.social i {
+  margin: 10px;
+  font-size: 20px;
+  color: #38bdf8;
+  transition: 0.3s;
+}
+
+.social i:hover {
+  color: white;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <h2>MyPortfolio</h2>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <h1>Hi, I'm <span>Ali Developer</span></h1>
+    <p>WordPress Developer & Graphic Designer with 5+ years experience creating modern websites and visual identities.</p>
+    <a href="#" class="btn">Hire Me</a>
+  </div>
+  <img src="https://via.placeholder.com/250" alt="Profile">
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2 class="section-title">My Skills</h2>
+  <div class="skills">
+    <div class="skill">WordPress Development</div>
+    <div class="skill">Elementor / Divi</div>
+    <div class="skill">WooCommerce</div>
+    <div class="skill">Adobe Photoshop</div>
+    <div class="skill">Illustrator</div>
+    <div class="skill">Brand Identity</div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2 class="section-title">Projects</h2>
+  <div class="projects">
+
+    <div class="project">
+      <h3>Business Website</h3>
+      <p>Custom WordPress site with Elementor and SEO optimization.</p>
+    </div>
+
+    <div class="project">
+      <h3>Ecommerce Store</h3>
+      <p>WooCommerce store with payment integration and UI design.</p>
+    </div>
+
+    <div class="project">
+      <h3>Logo Design</h3>
+      <p>Modern branding for startup including logo and identity kit.</p>
+    </div>
+
+    <div class="project">
+      <h3>Social Media Kit</h3>
+      <p>Creative Instagram posts and ad banners.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <h2 class="section-title">Experience</h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <h4>Senior WordPress Developer</h4>
+      <p>2022 - Present</p>
+      <p>Worked on 50+ websites globally.</p>
+    </div>
+
+    <div class="timeline-item">
+      <h4>Graphic Designer</h4>
+      <p>2020 - 2022</p>
+      <p>Created branding for multiple companies.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Follow Me</p>
+  <div class="social">
+    <i class="fab fa-facebook"></i>
+    <i class="fab fa-linkedin"></i>
+    <i class="fab fa-github"></i>
+    <i class="fab fa-behance"></i>
+  </div>
+  <p>© 2026 My Portfolio</p>
+</footer>
+
+</body>
+</html>
