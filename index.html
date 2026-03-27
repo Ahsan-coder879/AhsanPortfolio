@@ -83,16 +83,28 @@
         .edu-school { color: var(--text-muted); font-size: 0.9rem; }
         .edu-gpa { margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); font-size: 0.85rem; }
 
-        /* --- Portfolio Improved --- */
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; padding: 50px 10%; }
-        .portfolio-card { height: 280px; cursor: pointer; border-radius: 20px; overflow: hidden; }
-        .portfolio-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
-        .portfolio-card:hover img { transform: scale(1.1); }
-        .portfolio-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; opacity: 0; transition: 0.4s; }
-        .portfolio-card:hover .portfolio-overlay { opacity: 1; }
-        .portfolio-tag { font-size: 0.7rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-        .portfolio-title { font-size: 1.2rem; font-weight: 700; margin-top: 5px; }
-        .portfolio-desc { font-size: 0.8rem; color: var(--text-muted); margin-top: 8px; }
+        /* --- Portfolio Section --- */
+        .portfolio-section { padding: 100px 10%; }
+        .portfolio-header { text-align: center; margin-bottom: 60px; }
+        .portfolio-header p { color: var(--text-muted); max-width: 600px; margin: 15px auto 0; line-height: 1.7; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 25px; }
+        .portfolio-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; transition: var(--transition); position: relative; }
+        .portfolio-card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15); }
+        .portfolio-img { width: 100%; height: 220px; object-fit: cover; transition: 0.5s; position: relative; }
+        .portfolio-card:hover .portfolio-img { transform: scale(1.05); }
+        .portfolio-card .portfolio-img::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(to top, var(--card) 0%, transparent 100%); pointer-events: none; }
+        .portfolio-content { padding: 25px; }
+        .portfolio-category { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 50px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+        .category-wp { background: rgba(99, 102, 241, 0.15); color: #818cf8; }
+        .category-graphic { background: rgba(236, 72, 153, 0.15); color: #f472b6; }
+        .category-python { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+        .portfolio-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+        .portfolio-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 15px; }
+        .portfolio-tools { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 15px; }
+        .portfolio-tool { background: rgba(255,255,255,0.05); padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; color: var(--text-muted); }
+        .portfolio-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-weight: 600; font-size: 0.85rem; text-decoration: none; transition: 0.3s; }
+        .portfolio-link:hover { gap: 12px; }
+        .portfolio-link i { font-size: 0.8rem; }
 
         /* --- Forms & Footer --- */
         .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; padding: 100px 10%; }
@@ -104,6 +116,12 @@
         @media (max-width: 800px) {
             .process-grid, .contact-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 3rem; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .portfolio-section { padding: 60px 5%; }
+        }
+
+        @media (max-width: 500px) {
+            .portfolio-card { margin-bottom: 20px; }
         }
     </style>
 </head>
@@ -169,59 +187,137 @@
         </div>
     </section>
 
-    <section id="work" style="padding: 100px 0;">
-        <div style="text-align: center; margin-bottom: 50px;">
+    <section id="work" class="portfolio-section">
+        <div class="portfolio-header">
             <span class="section-tag" style="justify-content: center;">Portfolio</span>
             <h2>Featured Projects</h2>
+            <p>A collection of my work across WordPress development, graphic design, and Python programming.</p>
+            <div class="filter-nav reveal" style="margin-top: 30px;">
+                <button class="filter-btn active" onclick="filterProjects('all')">All</button>
+                <button class="filter-btn" onclick="filterProjects('wordpress')">WordPress</button>
+                <button class="filter-btn" onclick="filterProjects('graphic')">Graphic Design</button>
+                <button class="filter-btn" onclick="filterProjects('python')">Python</button>
+            </div>
         </div>
 
         <div class="portfolio-grid">
-            <div class="portfolio-card glass reveal" onclick="window.open('https://elyziafragrance.com/', '_blank')">
-                <img src="elyziafragrance.png" alt="Elyzia Fragrance">
-                <div class="portfolio-overlay">
-                    <span class="portfolio-tag">WordPress / E-Commerce</span>
+            <div class="portfolio-card reveal wordpress">
+                <img src="elyziafragrance.png" alt="Elyzia Fragrance" class="portfolio-img">
+                <div class="portfolio-content">
+                    <span class="portfolio-category category-wp">WordPress</span>
                     <h3 class="portfolio-title">Elyzia Fragrance</h3>
-                    <p class="portfolio-desc">Luxury perfume e-commerce store with seamless shopping experience</p>
+                    <p class="portfolio-desc">Luxury perfume e-commerce store with seamless shopping experience and payment integration.</p>
+                    <div class="portfolio-tools">
+                        <span class="portfolio-tool">WooCommerce</span>
+                        <span class="portfolio-tool">Elementor</span>
+                        <span class="portfolio-tool">Stripe</span>
+                    </div>
+                    <a href="https://elyziafragrance.com/" target="_blank" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="portfolio-card glass reveal" onclick="window.open('https://listopiapro.com/', '_blank')">
-                <img src="Listopia.png" alt="Listopia Pro">
-                <div class="portfolio-overlay">
-                    <span class="portfolio-tag">WordPress / Directory</span>
+
+            <div class="portfolio-card reveal wordpress">
+                <img src="Listopia.png" alt="Listopia Pro" class="portfolio-img">
+                <div class="portfolio-content">
+                    <span class="portfolio-category category-wp">WordPress</span>
                     <h3 class="portfolio-title">Listopia Pro</h3>
-                    <p class="portfolio-desc">Business directory platform with advanced search features</p>
+                    <p class="portfolio-desc">Business directory platform with advanced search, filtering, and user dashboard features.</p>
+                    <div class="portfolio-tools">
+                        <span class="portfolio-tool">Custom Theme</span>
+                        <span class="portfolio-tool">ACF</span>
+                        <span class="portfolio-tool">Google Maps API</span>
+                    </div>
+                    <a href="https://listopiapro.com/" target="_blank" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="portfolio-card glass reveal" onclick="window.open('https://aqua.pk/', '_blank')">
-                <img src="aqua.png" alt="Aqua PK">
-                <div class="portfolio-overlay">
-                    <span class="portfolio-tag">WordPress / Optimization</span>
+
+            <div class="portfolio-card reveal wordpress">
+                <img src="aqua.png" alt="Aqua PK" class="portfolio-img">
+                <div class="portfolio-content">
+                    <span class="portfolio-category category-wp">WordPress</span>
                     <h3 class="portfolio-title">Aqua PK</h3>
-                    <p class="portfolio-desc">Performance-optimized corporate website</p>
+                    <p class="portfolio-desc">Performance-optimized corporate website with modern design and fast loading times.</p>
+                    <div class="portfolio-tools">
+                        <span class="portfolio-tool">Divi</span>
+                        <span class="portfolio-tool">SEO</span>
+                        <span class="portfolio-tool">Speed Optimization</span>
+                    </div>
+                    <a href="https://aqua.pk/" target="_blank" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="portfolio-card glass reveal">
-                <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600" alt="Brand Identity">
-                <div class="portfolio-overlay">
-                    <span class="portfolio-tag">Branding / Logo</span>
+
+            <div class="portfolio-card reveal wordpress">
+                <img src="purevivid.png" alt="Pure Vivid" class="portfolio-img">
+                <div class="portfolio-content">
+                    <span class="portfolio-category category-wp">WordPress</span>
+                    <h3 class="portfolio-title">Pure Vivid</h3>
+                    <p class="portfolio-desc">Complete website optimization achieving 95+ PageSpeed score with modern UX.</p>
+                    <div class="portfolio-tools">
+                        <span class="portfolio-tool">Performance</span>
+                        <span class="portfolio-tool">Core Web Vitals</span>
+                        <span class="portfolio-tool">UX Design</span>
+                    </div>
+                    <a href="https://purevivid.com.au/" target="_blank" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="portfolio-card reveal graphic">
+                <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600" alt="Cyber Identity" class="portfolio-img">
+                <div class="portfolio-content">
+                    <span class="portfolio-category category-graphic">Graphic Design</span>
                     <h3 class="portfolio-title">Cyber Identity</h3>
-                    <p class="portfolio-desc">Modern brand identity design for tech startup</p>
+                    <p class="portfolio-desc">Modern brand identity design including logo, color palette, and brand guidelines.</p>
+                    <div class="portfolio-tools">
+                        <span class="portfolio-tool">Adobe Illustrator</span>
+                        <span class="portfolio-tool">Figma</span>
+                        <span class="portfolio-tool">Branding</span>
+                    </div>
+                    <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-           <div class="portfolio-card glass reveal" onclick="window.open('https://purevivid.com.au/', '_blank')">
-                <img src="purevivid.png" alt="Aqua PK">
-                <div class="portfolio-overlay">
-                    <span class="portfolio-tag">WordPress / Optimization</span>
-                    <h3 class="portfolio-title">Aqua PK</h3>
-                    <p class="portfolio-desc">Performance-optimized corporate website</p>
+
+            <div class="portfolio-card reveal graphic">
+                <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600" alt="Finance Dashboard" class="portfolio-img">
+                <div class="portfolio-content">
+                    <span class="portfolio-category category-graphic">Graphic Design</span>
+                    <h3 class="portfolio-title">Finance Dashboard</h3>
+                    <p class="portfolio-desc">Analytics dashboard UI design with clean data visualization and charts.</p>
+                    <div class="portfolio-tools">
+                        <span class="portfolio-tool">Figma</span>
+                        <span class="portfolio-tool">UI/UX</span>
+                        <span class="portfolio-tool">Data Viz</span>
+                    </div>
+                    <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="portfolio-card glass reveal">
-                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=600" alt="Mobile App">
-                <div class="portfolio-overlay">
-                    <span class="portfolio-tag">Web App</span>
-                    <h3 class="portfolio-title">Task Manager</h3>
-                    <p class="portfolio-desc">Productivity app with modern UI/UX design</p>
+
+            <div class="portfolio-card reveal python">
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600" alt="Web Data Scraper" class="portfolio-img">
+                <div class="portfolio-content">
+                    <span class="portfolio-category category-python">Python</span>
+                    <h3 class="portfolio-title">Web Data Scraper</h3>
+                    <p class="portfolio-desc">Automated web scraping tool for collecting and organizing data from multiple sources.</p>
+                    <div class="portfolio-tools">
+                        <span class="portfolio-tool">BeautifulSoup</span>
+                        <span class="portfolio-tool">Selenium</span>
+                        <span class="portfolio-tool">Pandas</span>
+                    </div>
+                    <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="portfolio-card reveal python">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600" alt="Data Analyzer" class="portfolio-img">
+                <div class="portfolio-content">
+                    <span class="portfolio-category category-python">Python</span>
+                    <h3 class="portfolio-title">Data Analyzer</h3>
+                    <p class="portfolio-desc">Data analysis and visualization project processing large datasets with insights.</p>
+                    <div class="portfolio-tools">
+                        <span class="portfolio-tool">Pandas</span>
+                        <span class="portfolio-tool">Matplotlib</span>
+                        <span class="portfolio-tool">NumPy</span>
+                    </div>
+                    <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -302,7 +398,32 @@
             blur.animate({ left: e.clientX + 'px', top: e.clientY + 'px' }, { duration: 1200, fill: "forwards" });
         });
 
-        // 2. Scroll Reveal
+        // 2. Project Filter
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.portfolio-card');
+            const btns = document.querySelectorAll('.filter-btn');
+
+            btns.forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    if (category === 'all' || card.classList.contains(category)) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }, 200);
+            });
+        }
+
+        // 3. Scroll Reveal
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('visible');
