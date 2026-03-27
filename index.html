@@ -68,6 +68,32 @@
         .process-card { padding: 40px; text-align: left; }
         .step-num { font-size: 3rem; font-weight: 800; opacity: 0.1; position: absolute; top: 10px; right: 20px; }
 
+        /* --- Skills Section --- */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; padding: 50px 10%; }
+        .skill-card { padding: 30px; text-align: center; }
+        .skill-icon { width: 60px; height: 60px; background: var(--accent-glow); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 1.5rem; }
+        .skill-name { font-weight: 700; margin-bottom: 5px; }
+        .skill-level { font-size: 0.75rem; color: var(--text-muted); }
+
+        /* --- Education Section --- */
+        .edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; padding: 50px 10%; }
+        .edu-card { padding: 40px; }
+        .edu-year { font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-bottom: 10px; }
+        .edu-degree { font-size: 1.2rem; font-weight: 700; margin-bottom: 5px; }
+        .edu-school { color: var(--text-muted); font-size: 0.9rem; }
+        .edu-gpa { margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); font-size: 0.85rem; }
+
+        /* --- Portfolio Improved --- */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; padding: 50px 10%; }
+        .portfolio-card { height: 280px; cursor: pointer; border-radius: 20px; overflow: hidden; }
+        .portfolio-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .portfolio-card:hover img { transform: scale(1.1); }
+        .portfolio-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; opacity: 0; transition: 0.4s; }
+        .portfolio-card:hover .portfolio-overlay { opacity: 1; }
+        .portfolio-tag { font-size: 0.7rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .portfolio-title { font-size: 1.2rem; font-weight: 700; margin-top: 5px; }
+        .portfolio-desc { font-size: 0.8rem; color: var(--text-muted); margin-top: 8px; }
+
         /* --- Forms & Footer --- */
         .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; padding: 100px 10%; }
         input, textarea { width: 100%; background: #111; border: 1px solid var(--border); padding: 18px; border-radius: 15px; color: white; margin-bottom: 20px; font-family: inherit; }
@@ -87,132 +113,183 @@
     <div id="cursor-blur"></div>
 
     <nav>
-        <div style="font-weight: 800; font-size: 1.2rem;">PORTFOLIO<span style="color:var(--accent)">.</span></div>
+        <div style="font-weight: 800; font-size: 1.2rem;">AH<span style="color:var(--accent)">.</span></div>
         <div class="nav-links">
             <a href="#home">Home</a>
+            <a href="#skills">Skills</a>
             <a href="#work">Projects</a>
-            <a href="#about">Process</a>
+            <a href="#education">Education</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
 
     <section class="hero" id="home">
-        <div class="status-badge reveal"><div class="status-dot"></div> Available for new projects</div>
-        <h1 class="reveal">Web Developer & <span>Brand</span> Designer.</h1>
-        <p class="reveal" style="color: var(--text-muted); max-width: 600px;">Crafting pixel-perfect WordPress experiences and high-end visual identities that convert visitors into loyal customers.</p>
+        <img src="profile.jpeg" alt="Profile" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid var(--accent); margin-bottom: 1.5rem;">
+        <div class="status-badge reveal"><div class="status-dot"></div> Available for work</div>
+        <h1 class="reveal">Hi, I'm <span>Ahsan</span></h1>
+        <p class="reveal" style="color: var(--text-muted); max-width: 600px; font-size: 1.1rem;">BS Software Engineering student passionate about web development, creating modern and responsive websites that make an impact.</p>
     </section>
 
-    <section id="work" style="padding-bottom: 100px;">
+    <section id="skills" style="padding: 100px 0; background: #080808;">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="section-tag" style="justify-content: center;">What I Know</span>
+            <h2>Skills & Technologies</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card glass reveal">
+                <div class="skill-icon" style="color: #e34f26;"><i class="fab fa-html5"></i></div>
+                <div class="skill-name">HTML5</div>
+                <div class="skill-level">Advanced</div>
+            </div>
+            <div class="skill-card glass reveal">
+                <div class="skill-icon" style="color: #1572b6;"><i class="fab fa-css3-alt"></i></div>
+                <div class="skill-name">CSS3</div>
+                <div class="skill-level">Advanced</div>
+            </div>
+            <div class="skill-card glass reveal">
+                <div class="skill-icon" style="color: #f7df1e;"><i class="fab fa-js"></i></div>
+                <div class="skill-name">JavaScript</div>
+                <div class="skill-level">Intermediate</div>
+            </div>
+            <div class="skill-card glass reveal">
+                <div class="skill-icon" style="color: #777bb4;"><i class="fab fa-php"></i></div>
+                <div class="skill-name">PHP</div>
+                <div class="skill-level">Intermediate</div>
+            </div>
+            <div class="skill-card glass reveal">
+                <div class="skill-icon" style="color: #3776ab;"><i class="fab fa-python"></i></div>
+                <div class="skill-name">Python</div>
+                <div class="skill-level">Intermediate</div>
+            </div>
+            <div class="skill-card glass reveal">
+                <div class="skill-icon" style="color: #21759b;"><i class="fab fa-wordpress"></i></div>
+                <div class="skill-name">WordPress</div>
+                <div class="skill-level">Advanced</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" style="padding: 100px 0;">
         <div style="text-align: center; margin-bottom: 50px;">
             <span class="section-tag" style="justify-content: center;">Portfolio</span>
-            <h2>Proven Track Record</h2>
-            <div class="filter-nav reveal">
-                <button class="filter-btn active" onclick="filter('all')">All Work</button>
-                <button class="filter-btn" onclick="filter('wp')">WordPress</button>
-                <button class="filter-btn" onclick="filter('gd')">Graphic Design</button>
-            </div>
+            <h2>Featured Projects</h2>
         </div>
 
-        <div class="work-grid">
-            <div class="work-card glass reveal wp" onclick="window.open('https://elyziafragrance.com/', '_blank')">
-                <img src="https://images.unsplash.com/photo-1615484477778-ca3b77940c25?auto=format&fit=crop&w=600" class="work-img">
-                <div class="work-info">
-                    <span style="font-size: 0.7rem; color: var(--accent);">WORDPRESS / E-COMMERCE</span>
-                    <h3>Elyzia Fragrance</h3>
+        <div class="portfolio-grid">
+            <div class="portfolio-card glass reveal" onclick="window.open('https://elyziafragrance.com/', '_blank')">
+                <img src="elyziafragrance.png" alt="Elyzia Fragrance">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-tag">WordPress / E-Commerce</span>
+                    <h3 class="portfolio-title">Elyzia Fragrance</h3>
+                    <p class="portfolio-desc">Luxury perfume e-commerce store with seamless shopping experience</p>
                 </div>
             </div>
-            <div class="work-card glass reveal wp" onclick="window.open('https://listopiapro.com/', '_blank')">
-                <img src="https://images.unsplash.com/photo-1454165833767-027ffea7025c?auto=format&fit=crop&w=600" class="work-img">
-                <div class="work-info">
-                    <span style="font-size: 0.7rem; color: var(--accent);">WORDPRESS / DIRECTORY</span>
-                    <h3>Listopia Pro</h3>
+            <div class="portfolio-card glass reveal" onclick="window.open('https://listopiapro.com/', '_blank')">
+                <img src="Listopia.png" alt="Listopia Pro">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-tag">WordPress / Directory</span>
+                    <h3 class="portfolio-title">Listopia Pro</h3>
+                    <p class="portfolio-desc">Business directory platform with advanced search features</p>
                 </div>
             </div>
-            <div class="work-card glass reveal wp" onclick="window.open('https://aqua.pk/', '_blank')">
-                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600" class="work-img">
-                <div class="work-info">
-                    <span style="font-size: 0.7rem; color: var(--accent);">WORDPRESS / OPTIMIZATION</span>
-                    <h3>Aqua PK</h3>
+            <div class="portfolio-card glass reveal" onclick="window.open('https://aqua.pk/', '_blank')">
+                <img src="aqua.png" alt="Aqua PK">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-tag">WordPress / Optimization</span>
+                    <h3 class="portfolio-title">Aqua PK</h3>
+                    <p class="portfolio-desc">Performance-optimized corporate website</p>
                 </div>
             </div>
-
-            <div class="work-card glass reveal gd">
-                <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600" class="work-img">
-                <div class="work-info">
-                    <span style="font-size: 0.7rem; color: var(--accent);">BRANDING / LOGO</span>
-                    <h3>Cyber Identity</h3>
+            <div class="portfolio-card glass reveal">
+                <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600" alt="Brand Identity">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-tag">Branding / Logo</span>
+                    <h3 class="portfolio-title">Cyber Identity</h3>
+                    <p class="portfolio-desc">Modern brand identity design for tech startup</p>
                 </div>
             </div>
-            <div class="work-card glass reveal gd">
-                <img src="https://images.unsplash.com/photo-1572044162444-ad60f128bde2?auto=format&fit=crop&w=600" class="work-img">
-                <div class="work-info">
-                    <span style="font-size: 0.7rem; color: var(--accent);">UI DESIGN / FIGMA</span>
-                    <h3>Finance Dashboard</h3>
+           <div class="portfolio-card glass reveal" onclick="window.open('https://purevivid.com.au/', '_blank')">
+                <img src="purevivid.png" alt="Aqua PK">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-tag">WordPress / Optimization</span>
+                    <h3 class="portfolio-title">Aqua PK</h3>
+                    <p class="portfolio-desc">Performance-optimized corporate website</p>
+                </div>
+            </div>
+            <div class="portfolio-card glass reveal">
+                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=600" alt="Mobile App">
+                <div class="portfolio-overlay">
+                    <span class="portfolio-tag">Web App</span>
+                    <h3 class="portfolio-title">Task Manager</h3>
+                    <p class="portfolio-desc">Productivity app with modern UI/UX design</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" style="background: #080808; padding: 100px 0;">
+    <section id="education" style="padding: 100px 0; background: #080808;">
         <div style="text-align: center; margin-bottom: 50px;">
-            <span class="section-tag" style="justify-content: center;">Strategy</span>
-            <h2>My Working Process</h2>
+            <span class="section-tag" style="justify-content: center;">Background</span>
+            <h2>Education</h2>
         </div>
-        <div class="process-grid">
-            <div class="process-card glass reveal">
-                <div class="step-num">01</div>
-                <i class="fas fa-search-nodes" style="color:var(--accent); font-size: 1.5rem; margin-bottom: 20px;"></i>
-                <h3>Discovery</h3>
-                <p style="color:var(--text-muted); font-size: 0.9rem; margin-top: 10px;">Deep diving into your brand goals, target audience, and technical requirements.</p>
+        <div class="edu-grid">
+            <div class="edu-card glass reveal">
+                <div class="edu-year">2022 - 2026</div>
+                <div class="edu-degree">BS Software Engineering</div>
+                <div class="edu-school">University of the Punjab, Lahore</div>
+                <div class="edu-gpa">Currently pursuing degree with focus on web technologies and software development</div>
             </div>
-            <div class="process-card glass reveal">
-                <div class="step-num">02</div>
-                <i class="fas fa-pen-nib" style="color:var(--accent); font-size: 1.5rem; margin-bottom: 20px;"></i>
-                <h3>Design & Dev</h3>
-                <p style="color:var(--text-muted); font-size: 0.9rem; margin-top: 10px;">Transforming ideas into high-fidelity prototypes and secure, fast WordPress code.</p>
-            </div>
-            <div class="process-card glass reveal">
-                <div class="step-num">03</div>
-                <i class="fas fa-rocket" style="color:var(--accent); font-size: 1.5rem; margin-bottom: 20px;"></i>
-                <h3>Deployment</h3>
-                <p style="color:var(--text-muted); font-size: 0.9rem; margin-top: 10px;">Thorough testing, performance optimization, and final hand-off.</p>
+            <div class="edu-card glass reveal">
+                <div class="edu-year">2020 - 2022</div>
+                <div class="edu-degree">Intermediate (ICS)</div>
+                <div class="edu-school">Government College University, Lahore</div>
+                <div class="edu-gpa">Completed with focus on computer science fundamentals</div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact-grid">
-        <div class="reveal">
-            <span class="section-tag">Contact</span>
-            <h2 style="margin-bottom: 20px;">Let's build something great.</h2>
-            <p style="color: var(--text-muted); margin-bottom: 40px;">Currently accepting new projects in WordPress development and branding.</p>
-            <div style="display: flex; flex-direction: column; gap: 20px;">
-                <div class="glass" style="padding: 20px; display: flex; align-items: center; gap: 15px;">
-                    <i class="fas fa-envelope color: var(--accent)"></i> <span>hello@yourdomain.com</span>
-                </div>
-                <div class="glass" style="padding: 20px; display: flex; align-items: center; gap: 15px;">
-                    <i class="fas fa-location-dot color: var(--accent)"></i> <span>Lahore, Pakistan</span>
-                </div>
-            </div>
+    <section id="about" style="padding: 100px 0;">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="section-tag" style="justify-content: center;">About Me</span>
+            <h2>Who I Am</h2>
         </div>
-        <form class="glass reveal" style="padding: 40px;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <input type="text" placeholder="Name">
-                <input type="email" placeholder="Email">
-            </div>
-            <input type="text" placeholder="Subject">
-            <textarea placeholder="Tell me about your project..." rows="5"></textarea>
-            <button style="width: 100%; background: var(--accent); color: white; border: none; padding: 20px; border-radius: 15px; font-weight: 700; font-size: 1rem; cursor: pointer;">Send Message</button>
-        </form>
+        <div style="max-width: 700px; margin: 0 auto; padding: 0 10%; text-align: center;">
+            <p class="reveal" style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8;">
+                I'm a passionate software engineering student based in Lahore, Pakistan. I specialize in building modern, responsive websites using HTML, CSS, JavaScript, PHP, and WordPress. I love turning ideas into functional, beautiful web experiences and am constantly learning new technologies to stay ahead in this fast-paced industry.
+            </p>
+        </div>
     </section>
 
-    <footer style="padding: 50px 10%; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-        <p style="color: var(--text-muted); font-size: 0.8rem;">&copy; 2026 Developer Portfolio. All Rights Reserved.</p>
-        <div class="nav-links">
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-behance"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
+    <section id="contact" style="padding: 100px 10%; text-align: center;">
+        <span class="section-tag" style="justify-content: center;">Get In Touch</span>
+        <h2 style="margin-bottom: 50px;">Let's Connect</h2>
+        <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+            <a href="mailto:matraders241999@gmail.com" class="glass" style="width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                <i class="fas fa-envelope" style="font-size: 1.5rem; color: var(--accent);"></i>
+            </a>
+            <a href="#" class="glass" style="width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                <i class="fab fa-whatsapp" style="font-size: 1.5rem; color: #25D366;"></i>
+            </a>
+            <a href="#" class="glass" style="width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                <i class="fab fa-linkedin" style="font-size: 1.5rem; color: #0077b5;"></i>
+            </a>
+            <a href="#" class="glass" style="width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                <i class="fab fa-github" style="font-size: 1.5rem; color: var(--text-main);"></i>
+            </a>
+            <a href="#" class="glass" style="width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                <i class="fab fa-facebook" style="font-size: 1.5rem; color: #1877f2;"></i>
+            </a>
+            <a href="#" class="glass" style="width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                <i class="fab fa-instagram" style="font-size: 1.5rem; color: #e4405f;"></i>
+            </a>
+            <a href="#" class="glass" style="width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                <i class="fas fa-map-marker-alt" style="font-size: 1.5rem; color: #ef4444;"></i>
+            </a>
         </div>
+    </section>
+
+    <footer style="padding: 40px 10%; border-top: 1px solid var(--border); text-align: center;">
+        <p style="color: var(--text-muted); font-size: 0.85rem;">&copy; 2026 Ahsan. All Rights Reserved.</p>
     </footer>
 
     <script>
@@ -225,32 +302,7 @@
             blur.animate({ left: e.clientX + 'px', top: e.clientY + 'px' }, { duration: 1200, fill: "forwards" });
         });
 
-        // 2. Filter Logic
-        function filter(category) {
-            const items = document.querySelectorAll('.work-card');
-            const btns = document.querySelectorAll('.filter-btn');
-
-            btns.forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
-
-            items.forEach(item => {
-                item.style.opacity = '0';
-                item.style.transform = 'scale(0.9)';
-                setTimeout(() => {
-                    if (category === 'all' || item.classList.contains(category)) {
-                        item.style.display = 'block';
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                            item.style.transform = 'scale(1)';
-                        }, 50);
-                    } else {
-                        item.style.display = 'none';
-                    }
-                }, 300);
-            });
-        }
-
-        // 3. Scroll Reveal
+        // 2. Scroll Reveal
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('visible');
